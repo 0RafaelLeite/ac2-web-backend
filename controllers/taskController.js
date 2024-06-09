@@ -89,12 +89,12 @@ taskController.delete("/delete-my-task/:id",auth , async (req, res) => {
         let task = await TaskModel.find({assignee: userName, _id: id})
         
         if (!task) {
-            return res.status(404).json({ mensagem: "User not found" });
+            return res.status(404).json({ mensagem: "Task not found" });
         }
 
         await TaskModel.deleteOne({ _id: id });
 
-        return res.status(200).json({ message: "User deleted successfully" })
+        return res.status(200).json({ message: "Task deleted successfully" })
         
     }catch(err){
         console.log(`Something went wrong ${err}`)
